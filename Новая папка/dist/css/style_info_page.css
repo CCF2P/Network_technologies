@@ -1,0 +1,55 @@
+div img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
+.menu > ul {
+  list-style: none;
+  font-size: 1.2em;
+  text-align: justify;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background-color: lightgray;
+}
+
+.container {
+  display: flex;
+}
+
+.picture {
+  width: 30%;
+  float: left;
+  margin-right: 10px;
+}
+
+.text {
+  text-align: justify;
+  padding: 5px;
+}
+
+@media (max-width: 600px) {
+  .container {
+      flex-direction: column;
+  }
+
+  .picture {
+      float: none;
+      width: 100%;
+  }
+}
