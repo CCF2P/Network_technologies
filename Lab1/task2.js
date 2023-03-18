@@ -75,7 +75,8 @@ function ForEven(n) {
         html += '</tr>';
     }
 
-    for (let i = Math.trunc(n / 2); i > 0; i--) {
+    for (let i = Math.trunc(n / 2); i > 0; i--)
+    {
         html += '<tr>';
         for (let j = 0; j < n; j++) {
             if (j == i - 1) {
@@ -107,7 +108,7 @@ else {
     n = parseInt(n);
 
     for (let i = 1; i <= n; i++) {
-        html += `<hr width="${100 / i}">`
+        html += `<hr width="${100 / i}%">`
     }
 
     if (n / 2 % 1 != 0) {
@@ -118,7 +119,7 @@ else {
     }
 
     for (let i = n; i >= 1; i--) {
-        html += `<hr width="${100 / i}">`
+        html += `<hr width="${100 / i}%">`
     }
 
     document.write(html);
