@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Сайт о птицах Приморья</title>
+        <link rel="stylesheet" href="C:\Users\zhora\Desktop\Сетевые технологии\Новая папка\dist\css\styleTablePage.css">
+    </head>
+
+    <body>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="./index.html">Главная страница</a>
+                </li>
+                <li>
+                    <a href="./TablePage.html">Список птиц приморского края</a>
+                </li>
+            </ul>
+        </div>
+        <hr>
+
+        <details>
+            <summary> График </summary>
+            <form>
+                <table>
+                  <tbody><tr>
+                    <th>Значениe по оси OX</th>
+                    <th>Результат</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="radio" name="ox" value="0">Популяция<br>
+                    </td>
+                    <td>
+                      <input type="checkbox" name="oy" value="0">Регион<br>
+                      <input type="checkbox" name="oy" value="1">Вид<br>
+                    </td>
+                  </tr>
+                </tbody></table>
+                <input type="button" value="Построить">
+                <p>Здесь будет график</p>
+            </form>	
+        </details>
+
+        <details>
+            <summary> Фильтр</summary>
+            <form>
+                <p>
+                    <label for="category">Вес:</label>
+                    <input type="text" name="category">
+                </p>
+                <p>
+                   <label for="country">Длина:</label>
+                  <input type="text" name="country">
+                </p>
+                <input type="button" value="Найти">		
+            </form>	
+        </details>
+
+        <details>
+            <summary>Сортировка</summary>
+            <form>
+              <p>
+                  Первый уровень:
+                  <select name="sortFirst">
+                    <option value="0">Нет</option>
+                    <option value="1">Название</option>
+                    <option value="2">Вес</option>
+                    <option value="3">Длина</option>
+                    <option value="4">Размах крыла</option>
+                    <option value="6">Регион</option>
+                    <option value="5">Популяция</option>         
+                  </select>
+                  по убыванию? <input type="checkbox" name="descFirst">
+                </p>  
+                <p>
+                  Второй уровень:
+                  <select name="sortSecond">
+                    <option value="0">Нет</option>
+                    <option value="1">Название</option>
+                    <option value="2">Вес</option>
+                    <option value="3">Длина</option>
+                    <option value="4">Размах крыла</option>
+                    <option value="6">Регион</option>
+                    <option value="5">Популяция</option>
+                  </select>
+                  по убыванию? <input type="checkbox" name="descSecond">
+                </p>
+                <p>
+                  Третий уровень:
+                  <select name="sortThird">
+                    <option value="0">Нет</option>
+                    <option value="1">Название</option>
+                    <option value="2">Вес</option>
+                    <option value="3">Длина</option>
+                    <option value="4">Размах крыла</option>
+                    <option value="6">Регион</option>
+                    <option value="5">Популяция</option>
+                  </select>
+                  по убыванию? <input type="checkbox" name="descThird">
+                </p>
+              <input type="button" value="Сортировать">		
+            </form>	
+        </details>
+
+        <table class="table">
+            <tr>
+                <th>Название птицы</th>
+                <th>Вид</th>
+                <th>Средний вес птицы (в гр)</th>
+                <th>Средняя длина птицы (в см)</th>
+                <th>Средний размах крыла (в см)</th>
+                <th>Регион</th>
+                <th>Популяция</th>
+            </tr>
+            <tr>
+                <td>Краснозобая гагара</td>
+                <td>Gavia</td>
+                <td>1750</td>
+                <td>61</td>
+                <td>105,5</td>
+                <td>Северный</td>
+                <td>Популяция неизвестна</td>
+            </tr>
+            <tr>
+                <td>Чернозобая гагара</td>
+                <td>Gavia</td>
+                <td>2450</td>
+                <td>66,5</td>
+                <td>115</td>
+                <td>Северный</td>
+                <td>350</td>
+            </tr>
+            <tr>
+                <td>Белошейная гагара</td>
+                <td>Gavia</td>
+                <td>1900</td>
+                <td>62,5</td>
+                <td>29</td>
+                <td>Северный</td>
+                <td>101</td>
+            </tr>
+            <tr>
+                <td>Малая поганка</td>
+                <td>Podicipediformes</td>
+                <td>240</td>
+                <td>27</td>
+                <td>10</td>
+                <td>Южный</td>
+                <td>275</td>
+            </tr>
+            <tr>
+                <td>Серощёкая поганка</td>
+                <td>Podicipediformes</td>
+                <td>800</td>
+                <td>45</td>
+                <td>81</td>
+                <td>Западный</td>
+                <td>3030</td>
+            </tr>
+            <tr>
+                <td>Чомга</td>
+                <td>Podicipediformes</td>
+                <td>1150</td>
+                <td>48</td>
+                <td>70</td>
+                <td>Западный</td>
+                <td>250000</td>
+            </tr>
+            <tr>
+                <td>Белоспинный альбатрос</td>
+                <td>Diomedeidae</td>
+                <td>7500</td>
+                <td>87</td>
+                <td>559</td>
+                <td>Восточный</td>
+                <td>7365</td>
+            </tr>
+            <tr>
+                <td>Черноногий альбатрос</td>
+                <td>Diomedeidae</td>
+                <td>3000</td>
+                <td>72</td>
+                <td>180</td>
+                <td>Восточный</td>
+                <td>300000</td>
+            </tr>
+            <tr>
+                <td>Глупыш</td>
+                <td>Procellariidae</td>
+                <td>0,75</td>
+                <td>47</td>
+                <td>108</td>
+                <td>Северный</td>
+                <td>15000000</td>
+            </tr>
+            <tr>
+                <td>Серый буревестник</td>
+                <td>Procellariidae</td>
+                <td>0,78</td>
+                <td>45</td>
+                <td>102</td>
+                <td>Южный</td>
+                <td>10000000</td>
+            </tr>
+            <tr>
+                <td>Севеpная качурка</td>
+                <td>Hydrobatidae</td>
+                <td>0.045</td>
+                <td>19</td>
+                <td>45</td>
+                <td>Восточный</td>
+                <td>10000000</td>
+            </tr>
+            <tr>
+                <td>Большой баклан</td>
+                <td>Phalacrocorax</td>
+                <td>2500</td>
+                <td>88</td>
+                <td>140</td>
+                <td>Южный</td>
+                <td>34000</td>
+            </tr>
+            <tr>
+                <td>Японский баклан</td>
+                <td>Phalacrocorax</td>
+                <td>3000</td>
+                <td>84</td>
+                <td>152</td>
+                <td>Восточный</td>
+                <td>1450</td>
+            </tr>
+            <tr>
+                <td>Берингов баклан</td>
+                <td>Phalacrocorax</td>
+                <td>1500</td>
+                <td>70</td>
+                <td>110</td>
+                <td>Восточный</td>
+                <td>69000</td>
+            </tr>
+            <tr>
+                <td>Фрегат-ариэль</td>
+                <td>Fregatidae</td>
+                <td>800</td>
+                <td>76</td>
+                <td>180</td>
+                <td>Южный</td>
+                <td>12000</td>
+            </tr>
+            <tr>
+                <td>Большая выпь</td>
+                <td>Ardeidae</td>
+                <td>1450</td>
+                <td>70</td>
+                <td>33</td>
+                <td>Западный</td>
+                <td>40000</td>
+            </tr>
+            <tr>
+                <td>Волчок</td>
+                <td>Ardeidae</td>
+                <td>125</td>
+                <td>35</td>
+                <td>54</td>
+                <td>Южный</td>
+                <td>58</td>
+            </tr>
+            <tr>
+                <td>Кваква</td>
+                <td>Ardeidae</td>
+                <td>600</td>
+                <td>62</td>
+                <td>107</td>
+                <td>Южный</td>
+                <td>1500</td>
+            </tr>
+            <tr>
+                <td>Белокрылая цапля</td>
+                <td>Ardeidae</td>
+                <td>200</td>
+                <td>50</td>
+                <td>214</td>
+                <td>Южный</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>Пеганка</td>
+                <td>Anatidae</td>
+                <td>1000</td>
+                <td>64</td>
+                <td>120</td>
+                <td>Южный</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Мандаринка</td>
+                <td>Anatidae</td>
+                <td>550</td>
+                <td>22</td>
+                <td>65</td>
+                <td>Западный</td>
+                <td>65000</td>
+            </tr>
+            <tr>
+                <td>Касатка</td>
+                <td>Anatidae</td>
+                <td>550</td>
+                <td>51</td>
+                <td>85</td>
+                <td>Западный</td>
+                <td>90000</td>
+            </tr>
+            <tr>
+                <td>Клоктун</td>
+                <td>Anatidae</td>
+                <td>400</td>
+                <td>41</td>
+                <td>20</td>
+                <td>Западный</td>
+                <td>100000</td>
+            </tr>
+            <tr>
+                <td>Хохлатая чернеть</td>
+                <td>Anatidae</td>
+                <td>800</td>
+                <td>47</td>
+                <td>69</td>
+                <td>Северный</td>
+                <td>300000</td>
+            </tr>
+            <tr>
+                <td>Гага</td>
+                <td>Anatidae</td>
+                <td>2200</td>
+                <td>65</td>
+                <td>94</td>
+                <td>Северный</td>
+                <td>100000</td>
+            </tr>
+            <tr>
+                <td>Луток</td>
+                <td>Anatidae</td>
+                <td>800</td>
+                <td>40</td>
+                <td>60</td>
+                <td>Северный</td>
+                <td>106</td>
+            </tr>
+            <tr>
+                <td>Скопа</td>
+                <td>Pandionidae</td>
+                <td>1800</td>
+                <td>57</td>
+                <td>160</td>
+                <td>Северный</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Черный коршун</td>
+                <td>Accipitridae</td>
+                <td>900</td>
+                <td>55</td>
+                <td>49</td>
+                <td>Южный</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>Беркут</td>
+                <td>Accipitridae</td>
+                <td>4500</td>
+                <td>85</td>
+                <td>210</td>
+                <td>Северный</td>
+                <td>170000</td>
+            </tr>
+            <tr>
+                <td>Балобан</td>
+                <td>Falconidae</td>
+                <td>800</td>
+                <td>52</td>
+                <td>120</td>
+                <td>Западный</td>
+                <td>550</td>
+            </tr>
+            <tr>
+                <td>Рябчик</td>
+                <td>Tetrastes</td>
+                <td>400</td>
+                <td>36</td>
+                <td>51</td>
+                <td>Западный</td>
+                <td>20000000</td>
+            </tr>
+            <tr>
+                <td>Тетерев</td>
+                <td>Tetrastes</td>
+                <td>1200</td>
+                <td>55</td>
+                <td>85</td>
+                <td>Северный</td>
+                <td>720</td>
+            </tr>
+            <tr>
+                <td>Фазан</td>
+                <td>Phasianinae</td>
+                <td>1900</td>
+                <td>85</td>
+                <td>50</td>
+                <td>Восточный</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>Фифи</td>
+                <td>Charadriidae</td>
+                <td>70</td>
+                <td>20</td>
+                <td>37</td>
+                <td>Западный</td>
+                <td>120</td>
+            </tr>
+            <tr>
+                <td>Чибис</td>
+                <td>Charadriidae</td>
+                <td>300</td>
+                <td>29</td>
+                <td>82</td>
+                <td>Западный</td>
+                <td>1200000</td>
+            </tr>
+            <tr>
+                <td>Восточносибирская чайка</td>
+                <td>Laridae</td>
+                <td>1400</td>
+                <td>60</td>
+                <td>164</td>
+                <td>Западный</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Ипатка</td>
+                <td>Charadriidae</td>
+                <td>600</td>
+                <td>25</td>
+                <td>58</td>
+                <td>Восточный</td>
+                <td>1500000</td>
+            </tr>
+            <tr>
+                <td>Топорок</td>
+                <td>Fratercula</td>
+                <td>700</td>
+                <td>20</td>
+                <td>40</td>
+                <td>Восточный</td>
+                <td>16000</td>
+            </tr>
+            <tr>
+                <td>Кукушка</td>
+                <td>Cuculidae</td>
+                <td>140</td>
+                <td>33</td>
+                <td>60</td>
+                <td>Северный</td>
+                <td>70000</td>
+            </tr>
+            <tr>
+                <td>Филин</td>
+                <td>Strigidae</td>
+                <td>3100</td>
+                <td>70</td>
+                <td>170</td>
+                <td>Западный</td>
+                <td>250000</td>
+            </tr>
+            <tr>
+                <td>Удод</td>
+                <td>Upupidae</td>
+                <td>20</td>
+                <td>23</td>
+                <td>46</td>
+                <td>Южный</td>
+                <td>120000</td>
+            </tr>
+            <tr>
+                <td>Белоспинный дятел</td>
+                <td>Picidae</td>
+                <td>110</td>
+                <td>27</td>
+                <td>47</td>
+                <td>Западный</td>
+                <td>110000</td>
+            </tr>
+            <tr>
+                <td>Воронок</td>
+                <td>Hirundinidae</td>
+                <td>18</td>
+                <td>15</td>
+                <td>27</td>
+                <td>Западный</td>
+                <td>30000000</td>
+            </tr>
+            <tr>
+                <td>Скворец</td>
+                <td>Sturnidae</td>
+                <td>70</td>
+                <td>22</td>
+                <td>38</td>
+                <td>Западный</td>
+                <td>150000000</td>
+            </tr>
+            <tr>
+                <td>Ворон</td>
+                <td>Corvidae</td>
+                <td>1200</td>
+                <td>65</td>
+                <td>135</td>
+                <td>Западный</td>
+                <td>150000</td>
+            </tr>
+            <tr>
+                <td>Свиристель</td>
+                <td>Bombycillidae</td>
+                <td>65</td>
+                <td>18</td>
+                <td>33</td>
+                <td>Западный</td>
+                <td>60000</td>
+            </tr>
+            <tr>
+                <td>Желтобрюхая синица</td>
+                <td>Paridae</td>
+                <td>10</td>
+                <td>10</td>
+                <td>65</td>
+                <td>Западный</td>
+                <td>70000</td>
+            </tr>
+            <tr>
+                <td>Домовый воробей</td>
+                <td>Passer</td>
+                <td>30</td>
+                <td>15</td>
+                <td>25</td>
+                <td>Западный</td>
+                <td>1600000</td>
+            </tr>
+            <tr>
+                <td>Кедро́вка</td>
+                <td>Corvidae</td>
+                <td>180</td>
+                <td>30</td>
+                <td>55</td>
+                <td>Западный</td>
+                <td>190000</td>
+            </tr>
+            <tr>
+                <td>Грач</td>
+                <td>Corvidae</td>
+                <td>310</td>
+                <td>46</td>
+                <td>87</td>
+                <td>Западный</td>
+                <td>3200000</td>
+            </tr>
+        </table>
+        <p>За точность данных в таблица автор сайта ответсвенности не несёт</p>
+    </body>
+</html>
