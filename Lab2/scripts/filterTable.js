@@ -46,7 +46,11 @@ function filterTable(weight, length) {
     } else {
         data = getFilterTable(weight, weightIndex, length, lengthIndex);
     }
-    console.log(data);
-    printTable(data);
-    //return data;
+
+    if (data.length === 0) {
+        alert('Записей не найдено');
+    } else {
+        printTable(data);
+        //return data;
+    }
 }
