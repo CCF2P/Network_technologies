@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <title>Сайт о птицах Приморья</title>
         <link rel="stylesheet" href="./css/styleTablePage.css">
+        <link rel="stylesheet" href="./css/graphicStyle.css">
+
+        <script src="http://d3js.org/d3.v3.min.js"></script>
     </head>
 
     <body>
@@ -23,22 +26,24 @@
             <summary> График </summary>
             <form>
                 <table>
-                  <tbody><tr>
-                    <th>Значениe по оси OX</th>
-                    <th>Результат</th>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input type="radio" name="ox" value="0">Популяция<br>
-                    </td>
-                    <td>
-                      <input type="checkbox" name="oy" value="0">Регион<br>
-                      <input type="checkbox" name="oy" value="1">Вид<br>
-                    </td>
-                  </tr>
-                </tbody></table>
-                <input type="button" value="Построить">
-                <p>Здесь будет график</p>
+                    <tbody>
+                        <tr>
+                            <th>Значениe по оси OX</th>
+                            <th>Результат</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="oxValue">Регион<br>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="oyValue">Популяция<br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="button" value="Построить" onclick="createGraphic(this.form.oxValue.checked,
+                                                                                this.form.oyValue.checked)">
+                <p class="graphic"></p>
             </form>	
         </details>
 
@@ -89,7 +94,7 @@
                     <option value="2">Вид</option>
                     <option value="3">Вес</option>
                     <option value="4">Длина</option>
-                    <option value="6">Размах крыла</option>
+                    <option value="5">Размах крыла</option>
                     <option value="6">Регион</option>
                     <option value="7">Популяция</option>
                   </select>
@@ -557,7 +562,7 @@
                     <td>Домовый воробей</td>
                     <td>Passer</td>
                     <td>30</td>
-                    <td>15</td>
+                    <td>16</td>
                     <td>25</td>
                     <td>Западный</td>
                     <td>1600000</td>
@@ -584,6 +589,7 @@
         </table>
         <p>За точность данных в таблица автор сайта ответсвенности не несёт</p>
 
+        <script src="./scripts/createGraphic.js"></script>
         <script src="./scripts/tableSort.js"></script>
         <script src="./scripts/selectHide.js"></script>
         <script src="scripts/filterTable.js"></script>

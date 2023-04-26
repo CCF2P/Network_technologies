@@ -20,7 +20,7 @@ tr {
     height: 10px;
 }
 
-tr:hover {
+#table tr:hover {
     background-color: grey;
 }
 
