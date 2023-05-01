@@ -10,13 +10,14 @@
     <div class="graphic"></div>
     <form style="display: flex; flex-direction: row;">
         <p>
-            <label for="count">Количество:</label>
-            <input type="text" name="Count">
+            <input type="button"
+                value="Начать"
+                onclick="Draw()">
         </p>
         <p style="margin-left: 10px;">
-            <input type="button"
-                value="Построить"
-                onclick="Draw(this.form.Count.value)">
+            <input type="button" 
+                value="Остановить"
+                onclick="clearInterval(r); svg.select('circle').remove()">
         </p>
     </form>
     <script src="./task2.js"></script>
