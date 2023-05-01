@@ -21,7 +21,7 @@ function createGraphic(ox, oy) {
 
     // Блокирую постоянную отрисовку графиков
     if (document.querySelector("svg") !== null) {
-        return;
+        document.querySelector("svg").remove();
     }
 
     let data = getDataForGraphic();
