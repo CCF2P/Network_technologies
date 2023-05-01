@@ -57,7 +57,7 @@ function drawGraphic(a, b) {
         
     // функция интерполяции значений на ось Х  
     let scaleX = d3.scale.linear()
-                        .domain([-25, 10])
+                        .domain([a - 1, b + 1])
                         .range([0, xAxisLength]);
                 
     // функция интерполяции значений на ось Y
