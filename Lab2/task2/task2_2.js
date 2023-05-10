@@ -66,16 +66,21 @@ function drawGraphic(a, b) {
 
     let arr_x = []
     let arr_y = []
-    for (let i = a; b - i > 0.001; i += 0.1) {
+    for (let i = a; b - i > 0.001; i += 0.01) {
         arr_x.push(i);
         let y = f(i);
         arr_y.push(y)
     }
 
     let max_y = maxArr(arr_y);
-    max_y = max_y > 50 ? 50 : max_y;
     let min_y = minArr(arr_y);
-    min_y = min_y < -50 ? -50 : min_y;
+    if (max_y > 50) {
+        max_y = 50;
+        min_y = -50;
+    } else if (min_y < -50) {
+        max_y = 50;
+        min_y = 50;
+    }
 
     let rawData = [];
     for (let i = 0; i < arr_x.length; i++) {
@@ -121,16 +126,11 @@ function drawGraphic(a, b) {
         .call(xAxis);
     
     // Рассчет сдвига оси Y в точку 0 по оси X
-    let yShift = document.querySelector(".x-axis")
-                        .childNodes
-                        .forEach(function(node) {
-                            if (node.innerHTML.indexOf("0.0") !== -1) {
-                                return node.firstChild.getBoundingClientRect();
-                            }
-                        })
-    
+    let yShift = (scaleX(b + 1) - scaleX(a - 1)) / 2 + margin;
+    console.log(yShift);
+
     // отрисовка оси Y
-    if (a >= 0) {
+    /*if (a >= 0) {
         svg.append("g")       
             .attr("class", "y-axis")
             .attr("transform", // сдвиг оси вправо и вниз на margin
@@ -142,10 +142,12 @@ function drawGraphic(a, b) {
             .attr("transform", // сдвиг оси вниз и вправо на margin
                     "translate(" + (height / 2) + "," + margin + ")")
             .call(yAxis);
-    }
-    
-    // Сдвигаем ось Y в точку 0 по оси X
-    
+    }*/
+    svg.append("g")       
+            .attr("class", "y-axis")
+            .attr("transform", // сдвиг оси вправо и вниз на margin
+                    "translate(" + (margin) + "," + margin + ")")
+            .call(yAxis);
 
     // создаем набор вертикальных линий для сетки   
     d3.selectAll("g.x-axis g.tick")
@@ -166,7 +168,7 @@ function drawGraphic(a, b) {
         .attr("y2", 0);
     
     // функция, создающая по массиву точек линии
-    let line = d3.svg.line()
+    let line = d3.svg.line().interpolate("basis")
                     .x(function(d) { return d.x; })
                     .y(function(d) { return d.y; })
                     .defined(function(d) { return !isNaN(d.y) });

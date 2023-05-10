@@ -1,11 +1,27 @@
-.axis path, .axis line {
-    fill: none;
-    stroke: #333;
+.graph
+{
+  margin: 0 auto;
 }
-.axis .grid-line {
-    stroke: #000;
-    stroke-opacity: 0.2;
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
 }
+
 .axis text {
-    font: 10px Verdana;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.tick line
+{
+  stroke: #59ADEB;
+  opacity: 0.5;
+}
+
+g path.domain
+{
+  stroke: #4F4F4F;
 }
