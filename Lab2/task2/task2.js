@@ -23,7 +23,7 @@ function Draw() {
         .attr("cx", centerX + Math.cos(W1 * 0) * amplX)
         .attr("cy", centerY + Math.cos(W2 * 0 + PHASE) * amplY)
         .attr("r", RADIUS);
-
+    
     let phase = 0;
     r = setInterval(() => {
         phase += Math.PI / 100
@@ -31,5 +31,5 @@ function Draw() {
             .attr("cx", centerX + Math.cos(W1 * phase) * amplX)
             .attr("cy", centerY + Math.cos(W2 * phase + PHASE) * amplY)
             .attr("r", RADIUS);
-    }, 50);
+    }, 1);
 }

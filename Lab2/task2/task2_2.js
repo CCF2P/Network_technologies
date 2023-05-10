@@ -2,6 +2,32 @@ function f(x) {
     return Math.sqrt((x - 1) / x);
 }
 
+
+function maxArr(arr) {
+    let max = arr[0];
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+        if (!isNaN(arr[i]) && arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+
+function minArr(arr) {
+    let min = arr[0];
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+        if (!isNaN(arr[i]) && arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+
+
 function drawGraphic(a, b) {
     if (isNaN(parseFloat(a)) || !isFinite(a)) {
         alert("a должно быть вещественным числом");
@@ -40,29 +66,35 @@ function drawGraphic(a, b) {
 
     let arr_x = []
     let arr_y = []
-    for (let i = a; i <= b; i++) {
+    for (let i = a; b - i > 0.001; i += 0.1) {
         arr_x.push(i);
         let y = f(i);
         arr_y.push(y)
     }
 
+    let max_y = maxArr(arr_y);
+    max_y = max_y > 50 ? 50 : max_y;
+    let min_y = minArr(arr_y);
+    min_y = min_y < -50 ? -50 : min_y;
+
     let rawData = [];
     for (let i = 0; i < arr_x.length; i++) {
         if (!isFinite(arr_y[i])) {
-            rawData.push({x: arr_x[i], y: yAxisLength});
+            rawData.push({x: arr_x[i], y: NaN});
         } else { 
             rawData.push({x: arr_x[i], y: arr_y[i]});
-        }
+                max = arr_y[i];
+            }
     }
         
     // функция интерполяции значений на ось Х  
     let scaleX = d3.scale.linear()
-                        .domain([a - 1, b + 1])
+                        .domain([minArr(arr_x) - 1, maxArr(arr_x) + 1])
                         .range([0, xAxisLength]);
                 
     // функция интерполяции значений на ось Y
     let scaleY = d3.scale.linear()
-                        .domain([10, -10])
+                        .domain([max_y, min_y])
                         .range([0, yAxisLength]);
 
     // масштабирование реальных данных в данные для нашей координатной системы
@@ -80,35 +112,55 @@ function drawGraphic(a, b) {
     let yAxis = d3.svg.axis()
                     .scale(scaleY)
                     .orient("left");
-                
-    // отрисовка оси Х             
+
+    // отрисовка оси Х    
     svg.append("g")       
         .attr("class", "x-axis")
         .attr("transform",  // сдвиг оси вниз и вправо
-            "translate(" + margin + "," + (height - margin) + ")")
+            "translate(" + margin + "," + (height / 2) + ")")
         .call(xAxis);
     
-    // отрисовка оси Y 
-    svg.append("g")       
-        .attr("class", "y-axis")
-        .attr("transform", // сдвиг оси вниз и вправо на margin
-                "translate(" + margin + "," + margin + ")")
-        .call(yAxis);
+    // Рассчет сдвига оси Y в точку 0 по оси X
+    let yShift = document.querySelector(".x-axis")
+                        .childNodes
+                        .forEach(function(node) {
+                            if (node.innerHTML.indexOf("0.0") !== -1) {
+                                return node.firstChild.getBoundingClientRect();
+                            }
+                        })
     
+    // отрисовка оси Y
+    if (a >= 0) {
+        svg.append("g")       
+            .attr("class", "y-axis")
+            .attr("transform", // сдвиг оси вправо и вниз на margin
+                    "translate(" + (width / 2) + "," + margin + ")")
+            .call(yAxis);
+    } else {
+        svg.append("g")       
+            .attr("class", "y-axis")
+            .attr("transform", // сдвиг оси вниз и вправо на margin
+                    "translate(" + (height / 2) + "," + margin + ")")
+            .call(yAxis);
+    }
+    
+    // Сдвигаем ось Y в точку 0 по оси X
+    
+
     // создаем набор вертикальных линий для сетки   
     d3.selectAll("g.x-axis g.tick")
         .append("line")
         .classed("grid-line", true)
         .attr("x1", 0)
-        .attr("y1", 0)
+        .attr("y1", -height)
         .attr("x2", 0)
-        .attr("y2", - (yAxisLength));
+        .attr("y2", yAxisLength);
         
     // рисуем горизонтальные линии координатной сетки
     d3.selectAll("g.y-axis g.tick")
         .append("line")
         .classed("grid-line", true)
-        .attr("x1", 0)
+        .attr("x1", -width)
         .attr("y1", 0)
         .attr("x2", xAxisLength)
         .attr("y2", 0);
@@ -116,7 +168,8 @@ function drawGraphic(a, b) {
     // функция, создающая по массиву точек линии
     let line = d3.svg.line()
                     .x(function(d) { return d.x; })
-                    .y(function(d) { return d.y; });
+                    .y(function(d) { return d.y; })
+                    .defined(function(d) { return !isNaN(d.y) });
     // добавляем путь
     svg.append("g")
         .append("path")
