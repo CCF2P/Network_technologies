@@ -1,74 +1,42 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
 
-function LogicGame() {
+function CheckDigit() {
   const [userValue, setUserValue] = React.useState("");
-  const [game, setGame] = React.useState(
-      {
-          value: Math.floor(Math.random() * 100),
-          arrValues: [],
-          isEnd: false
-      }
-  );
-
   const onChange = (event) => {
-      setUserValue(event.target.value);
+    setUserValue(event.target.value);
   };
-  const handlerSubmit = (event) => {
-      event.preventDefault();
-      setGame(
-          {
-              value: game.value,
-              arrValues: [...game.arrValues, userValue],
-              isEnd: game.value == userValue
-          }
-      );
-  };
-  const newGame = () => {
-      setUserValue('');
-      setGame(
-          {
-              value: Math.floor(Math.random() * 100),
-              arrValues: [],
-              isEnd: false
-          }
-      );
-  };
+
+  const [f, setF] = React.useState(true);
+  const onClick = () => {
+    setF(!f);
+  }
 
   return (
-      <div>
-          <h3>Угадай число от 0 до 100</h3>
-          <form onSubmit={handlerSubmit}>
-              <labe>
-                  Число:
-                  <input type="number" value={userValue} onChange={onChange}/>
-              </labe>
-              <input type="submit" value="OK"/>
-              <LogGame listLog={game}/>
-              {game.isEnd &&
-                  <>
-                      <ResultGame step={game.arrValues.length}/>
-                      <input type="button" value="Новая игра?" onClick={newGame}/>
-                  </>
-              }
-          </form>
-      </div>
+    <div>
+      <h3>Четное или нечетное число</h3>
+      <form>
+          <labe>
+              Число:
+              <input type="number" value={userValue} onChange={onChange} />
+          </labe>
+          {(f && userValue !== "") && <IsOddOrNot number={userValue} />}
+      </form>
+    </div>
   );
 }
 
 
-function LogGame(props) {
-  const number = Number(props.listLog.value);
-  const listLog = props.listLog.arrValues.map((value, index) =>
-      <p key={index}>
-          {index + 1}.
-          Число: {value}
-          {
-              Number(value) > number ? " больше задуманного" :
-              Number(value) < number ? " меньше задуманного" : " Угадал!"
-          }
-      </p>
-  );
+function IsOddOrNot(props) {
+  const checkValue = (value) =>
+    <p>
+      Число: {value}
+      {
+        Number(value) % 2 === 0 ? " число четное" : " число нечетное"
+      }
+    </p>
+
+  const listLog = checkValue(props.number);
   
   return (
       <div className="log">
@@ -77,18 +45,6 @@ function LogGame(props) {
   );
 }
 
-
-function ResultGame(props) {
-  const n = Number(props.step);
-  const result = n < 7 ? " Прекрасная логика, да ты еще и везунчик! " :
-                 n > 7 ? " Пока не очень, попробуй еще раз..." :
-                         " Логика у тебя в крови.";
-  return (
-      <h3>
-          {result}
-      </h3>
-  );
-}
 
 export default function Header() {
   return (
@@ -104,7 +60,7 @@ export default function Header() {
           </p>
         </div>
         <div className="ReturnNumber">
-          <LogicGame />
+          <CheckDigit />
         </div>
       </div>
     </header>
